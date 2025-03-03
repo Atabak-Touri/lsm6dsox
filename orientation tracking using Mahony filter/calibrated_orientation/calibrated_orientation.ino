@@ -84,9 +84,9 @@ void loop() {
   cal.calibrate(gyro);
   // Gyroscope needs to be converted from Rad/s to Degree/s
   // the rest are not unit-important
-  gx = gyro.gyro.x * SENSORS_RADS_TO_DPS;
-  gy = gyro.gyro.y * SENSORS_RADS_TO_DPS;
-  gz = gyro.gyro.z * SENSORS_RADS_TO_DPS;
+  gx = gyro.gyro.x; //* SENSORS_RADS_TO_DPS;
+  gy = gyro.gyro.y; //* SENSORS_RADS_TO_DPS;
+  gz = gyro.gyro.z; //* SENSORS_RADS_TO_DPS;
 
   // Update the SensorFusion filter
   filter.update(gx, gy, gz, 
@@ -127,16 +127,16 @@ void loop() {
   Serial.print(", ");
   Serial.println(roll);
 
-  float qw, qx, qy, qz;
-  filter.getQuaternion(&qw, &qx, &qy, &qz);
-  Serial.print("Quaternion: ");
-  Serial.print(qw, 4);
-  Serial.print(", ");
-  Serial.print(qx, 4);
-  Serial.print(", ");
-  Serial.print(qy, 4);
-  Serial.print(", ");
-  Serial.println(qz, 4);  
+  //float qw, qx, qy, qz;
+  //filter.getQuaternion(&qw, &qx, &qy, &qz);
+  //Serial.print("Quaternion: ");
+  //Serial.print(qw, 4);
+  //Serial.print(", ");
+  //Serial.print(qx, 4);
+  //Serial.print(", ");
+  //Serial.print(qy, 4);
+  //Serial.print(", ");
+  //Serial.println(qz, 4);  
   
 #if defined(AHRS_DEBUG_OUTPUT)
   Serial.print("Took "); Serial.print(millis()-timestamp); Serial.println(" ms");
